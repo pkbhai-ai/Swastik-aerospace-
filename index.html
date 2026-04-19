@@ -1,1 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swastik Aerospace | Future of Indian Defence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #05070a;
+            --accent-blue: #0070f3;
+            --accent-glow: rgba(0, 112, 243, 0.3);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Global Styles --- */
+        section {
+            padding: 100px 10%;
+            min-height: 80vh;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--glass);
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            background: rgba(5, 7, 10, 0.8);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--accent-blue);
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 150px;
+            background: radial-gradient(circle at 80% 20%, #101a2d 0%, transparent 40%);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .jet-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            background: linear-gradient(45deg, #111, #1a2536);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dim);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .jet-placeholder::after {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: rotate(-45deg);
+            animation: shine 5s infinite;
+        }
+
+        /* --- Projects Section --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-blue);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background: #111;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 { margin-bottom: 10px; font-size: 1.4rem; }
+        .card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; }
+
+        /* --- Vision & Founder --- */
+        .vision-container {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .vision-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .founder-box {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: linear-gradient(to right, var(--glass), transparent);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        /* --- Contact --- */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 15px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            outline: none;
+        }
+
+        .contact-form input:focus { border-color: var(--accent-blue); }
+
+        /* --- Modal --- */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: #0a0e14;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            border: 1px solid var(--glass-border);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 50px 10%;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- Animations --- */
+        @keyframes shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s all ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 100px; }
+            .hero-content p { margin: 0 auto 2.5rem auto; }
+            .hero-visual { margin-top: 50px; }
+            .nav-links { display: none; }
+            .vision-list { grid-template-columns: 1fr; }
+            .founder-box { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">SWASTIK AEROSPACE</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#vision">Vision</a>
+            <a href="#founder">Founder</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Building India’s <br><span style="color: var(--accent-blue);">Future in Aerospace</span></h1>
+            <p>Innovating next-generation fighter jets, propulsion engines, and indigenous defence systems for a stronger tomorrow.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+                <a href="#vision" class="btn btn-outline">Join Vision</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="jet-placeholder">
+                [ Futuristic Jet Silhouette ]
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2>Our Concepts</h2>
+        <div class="project-grid">
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); display: flex; align-items: center; justify-content: center;">SA-18</div>
+                <h3>SA-18 Fighter Jet</h3>
+                <p>A multi-role powerhouse designed for agility and heavy payload delivery.</p>
+                <button class="btn btn-outline" onclick="openModal('sa18')">View Details</button>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background: radial-gradient(circle, #222 0%, #000 100%); display: flex; align-items: center; justify-content: center;">SURYA 21</div>
+                <h3>Surya 21 Engine</h3>
+                <p>Next-gen thrust vectoring engine with unparalleled power-to-weight ratio.</p>
+                <button class="btn btn-outline" onclick="openModal('surya')">View Details</button>
+            </div>
+            <div class="card">
+                <div class="card-img" style="background: linear-gradient(to bottom, #111, #2c3e50); display: flex; align-items: center; justify-content: center;">AC-CONCEPT</div>
+                <h3>Aircraft Carrier</h3>
+                <p>Advanced naval base featuring stealth materials and modular deck systems.</p>
+                <button class="btn btn-outline" onclick="openModal('carrier')">View Details</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="reveal">
+        <div class="vision-container">
+            <h2>Our Vision</h2>
+            <p style="font-size: 1.2rem; color: var(--text-dim);">To transform India into a global aerospace hub by developing homegrown technologies that define the next century of air dominance.</p>
+            <div class="vision-list">
+                <div><strong>• Indigenous Strength:</strong> Reducing dependency on foreign imports for critical engine tech.</div>
+                <div><strong>• Scalability:</strong> Building a robust ecosystem for private defence manufacturing.</div>
+                <div><strong>• Innovation:</strong> Utilizing AI and physics-driven design for superior aerodynamics.</div>
+                <div><strong>• Affordability:</strong> Making high-tech fighter jets cost-effective and sustainable.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="founder" class="reveal">
+        <h2>Founder</h2>
+        <div class="founder-box">
+            <div style="width: 150px; height: 150px; background: var(--glass-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 2rem;">CP</div>
+            <div>
+                <h3>Cr Prince</h3>
+                <p style="color: var(--accent-blue); margin-bottom: 10px;">Aerospace Visionary & Lead Designer</p>
+                <p>Cr Prince is deeply passionate about aerospace, physics, and radical innovation. With a core focus on jet design and engineering, he aims to build a defence legacy that puts India at the forefront of global aerospace manufacturing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <h2>Work With Us</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Tell us about your interest in Swastik Aerospace" required></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div>
+            <div class="logo">SWASTIK</div>
+            <p style="font-size: 0.8rem; color: var(--text-dim);">Future of Indian Aerospace</p>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#founder">Founder</a>
+        </div>
+    </footer>
+
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalData">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Data
+        const projectData = {
+            sa18: {
+                title: "SA-18 Fighter Jet",
+                specs: "Length: 18m | Wingspan: 14m | Payload: 6600kg",
+                desc: "The SA-18 is a conceptual multi-role fighter designed for air superiority. It features a blended-wing body to reduce radar cross-section and internal weapon bays for stealth configurations. Future potential includes integration with AI-wingman drones."
+            },
+            surya: {
+                title: "Surya 21 Engine",
+                specs: "Dry Thrust: 107 kN | Afterburner: 168 kN",
+                desc: "Designed for high-altitude performance, the Surya 21 uses advanced ceramic matrix composites to handle extreme temperatures. This indigenous engine aims to power India's 5th and 6th generation aircraft with superior fuel efficiency."
+            },
+            carrier: {
+                title: "Modern Aircraft Carrier",
+                specs: "Length: 309m | Weight: 65,000 Tonnes | Width: 69m",
+                desc: "A massive leap in naval engineering, this carrier concept uses an electromagnetic aircraft launch system (EMALS). Its hull is designed with advanced hydrodynamic properties to maintain high speeds while reducing fuel consumption."
+            }
+        };
+
+        function openModal(id) {
+            const data = projectData[id];
+            document.getElementById('modalData').innerHTML = `
+                <h2 style="text-align: left; color: var(--accent-blue);">${data.title}</h2>
+                <p style="font-weight: 600; margin-bottom: 15px;">${data.specs}</p>
+                <hr style="border: 0; border-top: 1px solid var(--glass-border); margin-bottom: 20px;">
+                <p style="color: var(--text-dim);">${data.desc}</p>
+                <div style="margin-top: 30px;">
+                    <h4 style="margin-bottom: 10px;">Future Potential</h4>
+                    <p style="color: var(--text-dim);">Full-scale prototype development expected within the next decade, focusing on modularity and indigenous manufacturing.</p>
+                </div>
+            `;
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // Form Validation
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Message Sent! Thank you for contacting Swastik Aerospace.");
+            this.reset();
+        });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            let modal = document.getElementById('projectModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+  </html>
+  
